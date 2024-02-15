@@ -1,0 +1,10 @@
+version: '3'
+services:
+  bdest-app:
+    build: .
+    volumes:
+      - .:/src
+    ports:
+      - 8000:8000
+    environment:
+      - WATCHFIES_FORCE_POLLING=true
