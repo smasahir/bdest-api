@@ -1,0 +1,6 @@
+# Python に関連する無視設定
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
