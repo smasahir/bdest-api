@@ -1,6 +1,6 @@
 version: '3'
 services:
-  bdest-app:
+  bdest-api:
     build: .
     volumes:
       - .:/src
