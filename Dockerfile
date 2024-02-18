@@ -7,7 +7,7 @@ WORKDIR /src
 
 COPY env.yaml* ./
 
-# env.yamlが存在する場合、condaでライブラリをインストール
+# condaでライブラリをインストール
 RUN conda env create -f env.yaml -n v_env
 
 # uvicornのサーバーを起動
