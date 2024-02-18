@@ -1,4 +1,6 @@
+from sqlalchemy import select
 from sqlalchemy.orm import Session
+from sqlalchemy.engine import Result
 
 import api.models.molecule as mol_model
 import api.schemas.molecule as mol_schema
@@ -13,6 +15,7 @@ def create_molecule(
     db.refresh(mol)
 
     return mol
+
 
 def create_bonds(
         db: Session, molecule_id: int, bonds_create: list[mol_schema.Bond]
@@ -34,3 +37,33 @@ def create_bonds(
         raise
 
     return bonds
+
+
+def get_bonds_with_molecule(db: Session):
+    result: Result = db.execute(
+        select (
+            mol_model.Bond,
+            mol_model.Molecule
+        ).outerjoin(
+            mol_model.Molecule
+        )
+    )
+
+    return result.all()
+
+
+def get_molecule(db: Session, molecule_id: int) -> mol_model.Molecule | None:
+    result: Result = db.execute(
+        select(
+            mol_model.Molecule
+        ).filter(
+            mol_model.Molecule.molecule_id == molecule_id
+        )
+    )
+
+    return result.scalars().first()
+
+
+def delete_molecule(db: Session, original: mol_model.Molecule) -> None:
+    db.delete(original)
+    db.commit()
