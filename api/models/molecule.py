@@ -5,7 +5,7 @@ from sqlalchemy.dialects.postgresql import ARRAY
 from api.db import Base
 
 
-class Molecure(Base):
+class Molecule(Base):
     __tablename__="molecules"
 
     molecule_id = Column(Integer, primary_key=True)
@@ -20,6 +20,7 @@ class Bond(Base):
     molecule_id = Column(Integer, ForeignKey('molecules.molecule_id'), primary_key=True)
     bond_id = Column(Integer, primary_key=True)
     bde = Column(Float)
+    bond_type = Column(String)
     elements = Column(ARRAY(String))
     fragments = Column(ARRAY(String))
 
