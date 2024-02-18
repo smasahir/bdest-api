@@ -26,21 +26,6 @@ async def list_molecules():
     return response
 
 
-@router.get("/molecules/{molecule_id}")
-async def molecule(molecule_id: int):
-    response = mol_schema.Molecule(
-        molecule_id=molecule_id,
-        smiles="CCO",
-        bond_list=[
-            mol_schema.Bond(
-                bond_id=0,
-                bde=80.2)
-        ]
-    )
-
-    return response
-
-
 @router.post("/molecules", response_model=mol_schema.Molecule)
 async def create_molecule(
     molecule_body: mol_schema.MoleculeCreate, db: Session = Depends(get_db)):
