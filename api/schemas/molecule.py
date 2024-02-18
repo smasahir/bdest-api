@@ -17,13 +17,6 @@ class Bond(BaseModel):
     fragments: tuple[str, str] = (("*", "*"))
 
 
-    class Config:
-        orm_mode = True
-
-
 class Molecule(MoleculeBase):
     molecule_id: int
-    bond_list: list[Bond] = Field([])
-
-    class Config:
-        orm_mode = True
+    bond_list: list[Bond] | None = Field([])
