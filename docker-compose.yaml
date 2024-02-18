@@ -8,3 +8,15 @@ services:
       - 8000:8000
     environment:
       - WATCHFIES_FORCE_POLLING=true
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bde_db
+volumes:
+  postgres_data:
