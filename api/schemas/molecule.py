@@ -11,11 +11,11 @@ class MoleculeCreate(MoleculeBase):
 
 class Bond(BaseModel):
     bond_id: int
+    bde: float | None = Field(None)
+    bond_type: str = ("UNKNOWN")
+    elements: tuple[str, str] = (("C", "C"))
+    fragments: tuple[str, str] = (("*", "*"))
 
-
-class BDE(BaseModel):
-    bond_id: int
-    bde: float
 
     class Config:
         orm_mode = True
@@ -23,7 +23,7 @@ class BDE(BaseModel):
 
 class Molecule(MoleculeBase):
     molecule_id: int
-    bde_list: list[BDE] = Field([])
+    bond_list: list[Bond] = Field([])
 
     class Config:
         orm_mode = True

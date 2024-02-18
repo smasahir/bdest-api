@@ -11,11 +11,12 @@ async def list_molecules():
         mol_schema.Molecule(
             molecule_id=1,
             smiles="CCO",
-            bde_list=[
-                mol_schema.BDE(
+            bond_list=[
+                mol_schema.Bond(
                     bond_id=0,
                     bde=80.2)
-                ])
+                ]
+        )
     ]
 
     return response
@@ -26,11 +27,12 @@ async def molecule(molecule_id: int):
     response = mol_schema.Molecule(
         molecule_id=molecule_id,
         smiles="CCO",
-        bde_list=[
-            mol_schema.BDE(
+        bond_list=[
+            mol_schema.Bond(
                 bond_id=0,
                 bde=80.2)
-    ])
+        ]
+    )
 
     return response
 
