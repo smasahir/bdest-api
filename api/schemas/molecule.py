@@ -13,8 +13,8 @@ class Bond(BaseModel):
     bond_id: int
     bde: float | None = Field(None)
     bond_type: str = ("UNKNOWN")
-    elements: tuple[str, str] = (("C", "C"))
-    fragments: tuple[str, str] = (("*", "*"))
+    elements: tuple[str, str]
+    fragments: tuple[str, str] | tuple[None, None]
 
 
 class Molecule(MoleculeBase):

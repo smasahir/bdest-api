@@ -36,7 +36,12 @@ async def list_molecules(db: Session = Depends(get_db)):
 async def create_molecule(
     molecule_body: mol_schema.MoleculeCreate, db: Session = Depends(get_db)):
     mol = mol_crud.create_molecule(db, molecule_body)
-    bonds = mol_crud.create_bonds(db, mol.molecule_id, bde_service.get_bonds(mol.smiles))
+
+    try:
+        bonds = mol_crud.create_bonds(db, mol.molecule_id, bde_service.get_bonds(mol))
+    except HTTPException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.detail)
+
 
     bonds_schema = []
     for bond in bonds:
