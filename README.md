@@ -2,7 +2,7 @@
 - C, H, N, Oで構成される分子の結合解離エネルギー（BDE）を予測するAPI
 - [smasahir/bde-ml](https://github.com/smasahir/bde-ml)で作成した予測モデルをAPIで利用できるようにした。
 - [SMILES](https://ja.wikipedia.org/wiki/SMILES%E8%A8%98%E6%B3%95)で分子を指定してリクエストすると、"単結合"かつ"環状構造に含まれない結合"のBDEのみ予測し、結果をデータベースに登録する。
-- API利用方法はSwaggerUI(http://{hostname}/doc)を参照。
+- API利用方法はSwagger UI`http://{hostname}/docs`を参照。
 
 ## 前提条件
 - dockerが利用可能であること
