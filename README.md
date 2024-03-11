@@ -21,7 +21,7 @@
 3. Swagger UI`http://localhost:8000/docs`にブラウザでアクセスする。
 
 4. Swagger UIから各種APIを実行
-   - `POST /molecules`にて、Request bodeyを下記のように指定して発行すると、構造情報と予測結果がデータベースに登録される。レスポンスとしてその構造のBDEの予測結果が返却される。
+   - `POST /molecules`にて、Request bodyを下記のように指定して発行すると、構造情報と予測結果がデータベースに登録される。レスポンスとしてその構造のBDEの予測結果が返却される。
      ```json
      {
       "smiles": "CN1CCC[C@H]1c2cccnc2"
