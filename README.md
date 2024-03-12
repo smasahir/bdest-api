@@ -17,10 +17,14 @@
    ```bash
    docker compose up
    ```
+3. 初回起動時には、下記を実行しデータベースを初期化する。
+   ```bash
+   docker compose exec bdest-api conda run -n v_env python -m api.migrate_db
+   ```
 
-3. Swagger UI`http://localhost:8000/docs`にブラウザでアクセスする。
+5. Swagger UI`http://localhost:8000/docs`にブラウザでアクセスする。
 
-4. Swagger UIから各種APIを実行
+6. Swagger UIから各種APIを実行
    - `POST /molecules`にて、Request bodyを下記のように指定して発行すると、構造情報と予測結果がデータベースに登録される。レスポンスとしてその構造のBDEの予測結果が返却される。
      ```json
      {
